@@ -7,9 +7,9 @@ services:
       context: ../
       dockerfile: ./docker/backend/users/Dockerfile
     ports:
-      - "8090:3030"
+      - "8090:3000"
     environment:
-      - PORT=3030
+      - PORT=3000
     depends_on:
       - db
     volumes:
@@ -22,9 +22,9 @@ services:
       context: ../
       dockerfile: ./docker/backend/products/Dockerfile
     ports:
-      - "8091:3030"
+      - "8091:3000"
     environment:
-      - PORT=3031
+      - PORT=3000
     depends_on:
       - db
     volumes:
@@ -32,19 +32,19 @@ services:
     # networks:
     #   - esnet
   db:
-    container_name: demo-project-mariadb
-    image: mariadb:alpha
+    container_name: demo-project-mysql
+    image: mysql:8.0
     # volumes:
     #   - ./data_db:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
     ports: 
-      - "3306:3306"   
+      - "3307:3306"   
   nginx:
     container_name: demo-project-nginx
     image: nginx:alpine
     ports:
-      - "80:80"
+      - "81:80"
     volumes:
       - ./nginx/public:/srv/www/static
       - ../docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
