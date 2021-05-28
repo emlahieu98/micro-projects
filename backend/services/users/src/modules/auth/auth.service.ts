@@ -38,6 +38,6 @@ export class AuthService {
       }
     const payload = { email: user.email,role: user.role, sub: user.id };
       const token = this.jwtService.sign(payload);
-      return { user: { ...user.toJSON(), token } };
+      return { user: { ...user.toJSON(), "access-token":token } };
   }
 }
