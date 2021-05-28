@@ -9,7 +9,7 @@ export class ProductEntity extends AbstractEntity {
   name: string;
 
   @Column({ default: null, nullable: true })
-  decription: string | null;
+  description: string | null;
 
 
   @Column({ default: null, nullable: true })
