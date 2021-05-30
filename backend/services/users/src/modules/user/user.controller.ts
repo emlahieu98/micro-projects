@@ -11,7 +11,7 @@ import { ApiBearerAuth, ApiUnauthorizedResponse } from '@nestjs/swagger';
 
 
 @Controller('users')
-@ApiBearerAuth('Bearer')
+@ApiBearerAuth('access-token')
 export class UserController {
 
   constructor(
@@ -24,7 +24,8 @@ export class UserController {
   
   @UseGuards(AuthGuard(), RolesGuard)
   
-  @ApiUnauthorizedResponse()
+  
+  //@ApiUnauthorizedResponse()
   all() {
     return this.userService.find()
   }
